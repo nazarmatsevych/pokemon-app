@@ -1,13 +1,13 @@
-import PropTypes from "prop-types"
-import "./Card.scss";
-import React from "react"
-import pokemonTypes from "../../api/pokemonTypes"
+import React from 'react';
+import PropTypes from 'prop-types';
+import './Card.scss';
+import pokemonTypes from '../../api/pokemonTypes';
 
 export const Card = ({ pokemon, selectPokemon }) => (
 <div className="card">
     <div className="card__card"
       onClick={() => {
-        selectPokemon(pokemon.id)
+        selectPokemon(pokemon.id);
       }}>
       <div className="card__container-wrapper">
         <div className="card__height-container">
@@ -52,12 +52,12 @@ export const Card = ({ pokemon, selectPokemon }) => (
           </div>
         ))}
       </div>
-      <div className="card__moves">
+      {/* <div className="card__moves">
         {`Total moves: ${pokemon.moves.length}`}
-      </div>
+      </div> */}
     </div>
   </div>
-)
+);
 
 Card.propTypes = {
   pokemon: PropTypes.shape({
@@ -71,9 +71,8 @@ Card.propTypes = {
     moves: PropTypes.arrayOf(PropTypes.object).isRequired
   }),
   selectPokemon: PropTypes.func.isRequired,
-  // openModal: PropTypes.func.isRequired
-}
+};
 
 Card.defaultProps = {
   pokemon: {}
-}
+};

@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useCallback, useMemo } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import './App.scss';
 import { Card } from './components/Card/Card';
 import { PokemonStats } from './components/PokemonStats/PokemonStats';
 import { getAllPokemon, getPokemon } from './api/api';
-import { URL } from "./api/constants";
 import { Loader } from './components/Loader/Loader';
 
 function App() {
@@ -11,11 +10,12 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState('');
   const [pokemon, setPokemon] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [limit, setLimit] = useState(12);
   const [nextPageUrl, setNextPageUrl] = useState(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}`);
 
   const downloadData = useCallback( async (loadLink) => {
-    setLoading(true)
+    setLoading(true);
     const response = await getAllPokemon(loadLink);
     await loadPokemon(response.results);
     setNextPageUrl(response.next);
@@ -31,7 +31,6 @@ function App() {
       data.map(async pokemon => {
         return getPokemon(pokemon.url);
       }));
-      console.log(pokemon);
 
     // setPokemonData([...pokemonData, ...pokemon]);
     setPokemonData((prevData) => ([
@@ -44,9 +43,9 @@ function App() {
     setPokemon(pokemonData.filter(pokemon => pokemon.id === pokemonId));
   };
 
-  const filterPokemon = pokemonData.filter(
-    pokemon => pokemon.name.toLowerCase().includes(query.toLowerCase())
-  );
+  // const filterPokemon = pokemonData.filter(
+  //   pokemon => pokemon.name.toLowerCase().includes(query.toLowerCase())
+  // );
 
   // const filterPokemonByType = pokemonData.filter(p => p.types.some(slot => slot.type.name === nameFromSelect));
   const filterPokemonByType = pokemonData.filter(p => p.types.some(slot => slot.type.name.toLowerCase().includes(query.toLowerCase())));
@@ -54,7 +53,7 @@ function App() {
 
   return (
     <>
-      <div className="header title is-2">
+      <div className="header">
         <div className="header__title">
           Pokedex
         </div>
@@ -70,7 +69,7 @@ function App() {
             <input
               type="text"
               id="search-query"
-              className="input input is-normal"
+              className="input"
               placeholder="Find pokemon by type"
               value={query}
               onChange={event => {
@@ -98,7 +97,7 @@ function App() {
                 Load more
               </button>
             </div>
-            <div className="cardD">
+            <div className="cards">
               {pokemon.map(pokemon => (
                 <PokemonStats
                   pokemon={pokemon}

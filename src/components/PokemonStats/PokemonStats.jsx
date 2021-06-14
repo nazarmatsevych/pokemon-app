@@ -1,6 +1,7 @@
-import React from "react"
-import PropTypes from "prop-types"
-import "./PokemonStats.scss";
+/* eslint-disable react/prop-types */
+import React from 'react';
+import PropTypes from 'prop-types';
+import './PokemonStats.scss';
 
 export const PokemonStats = ({ pokemon }) => (
   <div className="stats__container">
@@ -10,38 +11,36 @@ export const PokemonStats = ({ pokemon }) => (
         alt={pokemon.name} className="stats__image"
       />
     </div>
-    <div className="stats__name">
-      {`${pokemon.name}`} #{`000${pokemon.id}`.slice(-4)}
-      <br />
+    <div className="stats__name-container">
+      <div className="stats__name">
+        {`${pokemon.name}`} #{`000${pokemon.id}`.slice(-4)}
+        <br />
+      </div>
     </div>
-    <tr className="stats__stats">
-      <td className="table">
-        <tr className="card__weight">
-          <td className="test4">Type</td> <td className="test5">{pokemon.types.map(type => type.type.name)[0]}{" "}{pokemon.types.map(type => type.type.name)[1]}</td>
+    <table className="stats__stats">
+      <tbody className="stats__stats-table">
+        <tr className="card__stats">
+          <td className="card__stats-stat4">Type</td><td className="card__stats-stat5">{pokemon.types.map(type => type.type.name)[0]}{' '}{pokemon.types.map(type => type.type.name)[1]}</td>
         </tr>
         <tr>
-          <td className="test3">Weight</td> <td className="test2">{pokemon.weight / 10}</td>
+          <td className="card__stats-stat3">Weight</td><td className="card__stats-stat2">{pokemon.weight / 10}</td>
         </tr>
         <tr>
-          <td className="test3">Total moves</td><td className="test2">{pokemon.moves.length}</td>
+          <td className="card__stats-stat3">Total moves</td><td className="card__stats-stat2">{pokemon.moves.length}</td>
         </tr>
-        {/* </div> */}
         {pokemon.stats.map(ability => (
-          <div className="stats__stat-container" key={ability.stat.name}>
-            <div className="stats__stat-name">
-              <td className="test1">{ability.stat.name}</td> <td className="test2">{ability.base_stat}</td>
-            </div>
-            <div className="stats__base-stat">
-            </div>
-            {/* <div className="stats__base-stat-value">
-            {ability.base_stat}
-          </div> */}
-          </div>
+          <React.Fragment key={ability.stat.name}>
+            <tr className="stats__stat-name">
+              <td className="card__stats-stat1">{ability.stat.name}</td><td className="card__stats-stat2">{ability.base_stat}</td>
+            </tr>
+            <tr className="stats__base-stat">
+            </tr>
+            </React.Fragment>
         ))}
-      </td>
-    </tr>
+      </tbody>
+    </table>
   </div>
-)
+);
 
 PokemonStats.propTypes = {
   pokemon: PropTypes.shape({
@@ -55,9 +54,9 @@ PokemonStats.propTypes = {
     })).isRequired
   }),
   selectPokemon: PropTypes.func,
-}
+};
 
 PokemonStats.defaultProps = {
   pokemon: {},
   selectPokemon: () => { }
-}
+};
