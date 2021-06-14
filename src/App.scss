@@ -33,17 +33,19 @@ $buttonSize: $cardSize * 3;
 
 .main__container {
   display: grid;
-  grid-template-columns: repeat(3, 260px);
+  grid-template-columns: repeat(1, $cardSize);
   gap: 10px;
+  max-width: 200px;
 
-  @media (max-width: 1500px) {
+  @media (min-width: 1150px) {
     grid-template-columns: repeat(2, $cardSize);
   }
 
-  @media (max-width: 1150px) {
-    grid-template-columns: repeat(1, $cardSize);
-    min-width: 420px;
+  @media (min-width: 1500px) {
+    grid-template-columns: repeat(3, $cardSize);
   }
+
+
 }
 
 .main__button-container {
@@ -79,7 +81,7 @@ $buttonSize: $cardSize * 3;
 
 .cards {
   position: fixed;
-  top: 20vh;
-  right: 20vw;
-  margin: 50px;
+  top: 20%;
+  right: 20%;
+  margin-left: 50px;
 }
