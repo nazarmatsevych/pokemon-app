@@ -1,7 +1,7 @@
 ## React Pokedex App
 
 # Description
-- Pokemons download from server (default 12 per page). "Load More" button loads another 12 Pokemons. Every card reflects the info about the Pokemon - avatar and name, by the click card-desciption is opening with the selected Pokemon. The filter box represents sorting all visible cards by Pokemon's type.
+- Pokemons download from server (default 12 per page). "Load More" button loads another 12 Pokemons. Every card shows the info about the Pokemon - avatar and name, by the click card-desciption is opening with the selected Pokemon. The filter box represents sorting all visible cards by Pokemon's type.
 
 # Links
 - [DEMO LINK](https://nazarmatsevych.github.io/pokemon-app)
