@@ -1,0 +1,85 @@
+$cardSize: 260px;
+$buttonSize: $cardSize * 3;
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 20px 0;
+  text-transform: uppercase;
+  font-size: 40px;
+  font-weight: bold;
+
+  &__title {
+    border: 1px solid black;
+    padding: 10px 200px;
+  }
+}
+
+.loader {
+  margin-top: 35vh;
+}
+
+.input {
+  height: 30px;
+  outline-color: #0075ff;
+  margin: 0 auto;
+}
+
+.main__container {
+  display: grid;
+  grid-template-columns: repeat(3, 260px);
+  gap: 10px;
+
+  @media (max-width: 1500px) {
+    grid-template-columns: repeat(2, $cardSize);
+  }
+
+  @media (max-width: 1150px) {
+    grid-template-columns: repeat(1, $cardSize);
+    min-width: 420px;
+  }
+}
+
+.cards {
+  position: fixed;
+  top: 16vh;
+  right: 20vw;
+  margin: 50px;
+}
+
+.main__button-container {
+  display: flex;
+  align-self: flex-start;
+  flex-wrap: wrap;
+  margin: 20px 20px;
+  justify-content: center;
+}
+
+.button {
+  background: #0075ff;
+  border: 1px solid #0075ff;
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  height: 40px;
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: transform 1s , color 1s;
+  width: 780px;
+  transition: 400ms;
+
+  &:hover {
+    background-color: #003cff;
+  }
+
+  &:active {
+    background-color: rgb(0, 195, 255);
+  }
+}
