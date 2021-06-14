@@ -1,53 +1,46 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import './PokemonStats.scss';
+import React from "react"
+import PropTypes from "prop-types"
+import "./PokemonStats.scss";
 
 export const PokemonStats = ({ pokemon }) => (
-    <div className='stats__container'>
-      <div className='stats__image-container'>
-        <img
-          src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}
-          alt={pokemon.name} className="stats__image"
-        />
-      </div>
-      <div className='stats__name'>
-        {`${pokemon.name}`}
-      </div>
-      <div className='stats__stats'>
-      <div className='card__height-container'>
-        <>
-          <span className='card__height'>
-            <div>
-              Height:
-            </div>
-            <div>
-              {`${pokemon.height / 10} m`}
-            </div>
-          </span>
-          <span className='card__weight'>
-            <div>
-              Weight:
-            </div>
-            <div>
-              {`${pokemon.weight / 100} kg`}
-            </div>
-          </span>
-          </>
-        </div>
+  <div className="stats__container">
+    <div className="stats__image-container">
+      <img
+        src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}
+        alt={pokemon.name} className="stats__image"
+      />
+    </div>
+    <div className="stats__name">
+      {`${pokemon.name}`} #{`000${pokemon.id}`.slice(-4)}
+      <br />
+    </div>
+    <tr className="stats__stats">
+      <td className="table">
+        <tr className="card__weight">
+          <td className="test4">Type</td> <td className="test5">{pokemon.types.map(type => type.type.name)[0]}{" "}{pokemon.types.map(type => type.type.name)[1]}</td>
+        </tr>
+        <tr>
+          <td className="test3">Weight</td> <td className="test2">{pokemon.weight / 10}</td>
+        </tr>
+        <tr>
+          <td className="test3">Total moves</td><td className="test2">{pokemon.moves.length}</td>
+        </tr>
+        {/* </div> */}
         {pokemon.stats.map(ability => (
-          <div className='stats__stat-container' key={ability.stat.name}>
-            <div className='stats__stat-name'>
-              {ability.stat.name}
+          <div className="stats__stat-container" key={ability.stat.name}>
+            <div className="stats__stat-name">
+              <td className="test1">{ability.stat.name}</td> <td className="test2">{ability.base_stat}</td>
             </div>
-            <div className='stats__base-stat'>
+            <div className="stats__base-stat">
             </div>
-              <div className='stats__base-stat-value'>
-                {ability.base_stat}
-              </div>
+            {/* <div className="stats__base-stat-value">
+            {ability.base_stat}
+          </div> */}
           </div>
         ))}
-      </div>
-    </div>
+      </td>
+    </tr>
+  </div>
 )
 
 PokemonStats.propTypes = {
@@ -66,5 +59,5 @@ PokemonStats.propTypes = {
 
 PokemonStats.defaultProps = {
   pokemon: {},
-  selectPokemon: () => {}
+  selectPokemon: () => { }
 }

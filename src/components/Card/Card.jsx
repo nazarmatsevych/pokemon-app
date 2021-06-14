@@ -1,17 +1,17 @@
-import PropTypes from 'prop-types'
-import './Card.scss';
-import React from 'react'
-import pokemonTypes from '../../api/pokemonTypes'
+import PropTypes from "prop-types"
+import "./Card.scss";
+import React from "react"
+import pokemonTypes from "../../api/pokemonTypes"
 
 export const Card = ({ pokemon, selectPokemon }) => (
 <div className="card">
-    <div className='card__card'
+    <div className="card__card"
       onClick={() => {
         selectPokemon(pokemon.id)
       }}>
       <div className="card__container-wrapper">
-        <div className='card__height-container'>
-          {/* <span className='card__height'>
+        <div className="card__height-container">
+          {/* <span className="card__height">
             <div>
               Height:
             </div>
@@ -20,8 +20,8 @@ export const Card = ({ pokemon, selectPokemon }) => (
             </div>
           </span>
         </div>
-        <div className='card__weight-container'>
-          <span className='card__weight'>
+        <div className="card__weight-container">
+          <span className="card__weight">
             <div>
               Weight:
             </div>
@@ -31,20 +31,20 @@ export const Card = ({ pokemon, selectPokemon }) => (
           </span> */}
         </div>
       </div>
-      <div className='card__name'>
-        {`${pokemon.name}`} #{`000${pokemon.id}`.slice(-4)}
+      <div className="card__name">
+        {pokemon.name}
       </div>
-      <div className='card__image-container'>
+      <div className="card__image-container">
         <img
-          className='card__image'
+          className="card__image"
           src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}
           alt={pokemon.name}
         />
       </div>
-      <div className='card__types'>
+      <div className="card__types">
         {pokemon.types.map(type => (
           <div
-            className='card__type'
+            className="card__type"
             key={type.slot}
             style={{ backgroundColor: pokemonTypes[type.type.name] }}
           >
@@ -52,7 +52,7 @@ export const Card = ({ pokemon, selectPokemon }) => (
           </div>
         ))}
       </div>
-      <div className='card__moves'>
+      <div className="card__moves">
         {`Total moves: ${pokemon.moves.length}`}
       </div>
     </div>
@@ -71,7 +71,7 @@ Card.propTypes = {
     moves: PropTypes.arrayOf(PropTypes.object).isRequired
   }),
   selectPokemon: PropTypes.func.isRequired,
-  openModal: PropTypes.func.isRequired
+  // openModal: PropTypes.func.isRequired
 }
 
 Card.defaultProps = {
