@@ -67,8 +67,16 @@ $buttonSize: $cardSize * 3;
   font-weight: 700;
   text-transform: uppercase;
   transition: transform 1s, color 1s;
-  width: 780px;
+  width: 260px;
   transition: 400ms;
+
+  @media (min-width: 1150px) {
+    width: 520px;
+  }
+
+  @media (min-width: 1500px) {
+    width: 760px;
+  }
 
   &:hover {
     background-color: #003cff;
